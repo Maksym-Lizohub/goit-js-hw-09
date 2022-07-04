@@ -1,0 +1,2 @@
+const t={onBtnStartChangeColor:document.querySelector("[data-start]"),onBodyColor:document.querySelector("body"),onBtnStop:document.querySelector("[data-stop]")};t.onBtnStartChangeColor.addEventListener("click",(()=>{timerId=setInterval((()=>{let o=`#${Math.floor(16777215*Math.random()).toString(16).padStart(6,0)}`;t.onBodyColor.style.backgroundColor=o,console.dir(o)}),1e3)})),t.onBtnStop.addEventListener("click",(()=>{clearInterval(timerId)}));
+//# sourceMappingURL=01-color-switcher.001afe19.js.map
