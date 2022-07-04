@@ -1,7 +1,7 @@
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215)
     .toString(16)
-    .padStart(6, 0)}`;
+    .padStart(6, 0)}`; //так більше подобаеться!)
 }
 
 const refs = {
@@ -10,13 +10,14 @@ const refs = {
   onBtnStop: document.querySelector('[data-stop]'),
 };
 
-refs.onBodyColor.style.backgroundColor = '';
+refs.onBodyColor.style.background =
+  'linear-gradient(to bottom, blue 50%, yellow 50%) no-repeat';
 
 let timerId = null;
 
 refs.onBtnStart.addEventListener('click', () => {
   timerId = setInterval(() => {
-    refs.onBodyColor.style.backgroundColor = getRandomHexColor();
+    refs.onBodyColor.style.background = getRandomHexColor();
   }, 1000);
   refs.onBtnStart.disabled = true;
   refs.onBtnStop.disabled = false;
