@@ -5,21 +5,26 @@ function getRandomHexColor() {
 }
 
 const refs = {
-  onBtnStartChangeColor: document.querySelector('[data-start]'),
+  onBtnStart: document.querySelector('[data-start]'),
   onBodyColor: document.querySelector('body'),
   onBtnStop: document.querySelector('[data-stop]'),
 };
 
-const onChangeColor = () => {
-  timerId = setInterval(() => {
-    let bckgndColor = getRandomHexColor();
-    refs.onBodyColor.style.backgroundColor = bckgndColor;
-    console.dir(bckgndColor);
-  }, 1000);
-};
+refs.onBodyColor.style.backgroundColor = '';
 
-refs.onBtnStartChangeColor.addEventListener('click', onChangeColor);
+let timerId = null;
+
+refs.onBtnStart.addEventListener('click', () => {
+  timerId = setInterval(() => {
+    refs.onBodyColor.style.backgroundColor = getRandomHexColor();
+  }, 1000);
+  refs.onBtnStart.disabled = true;
+  refs.onBtnStop.disabled = false;
+});
 
 refs.onBtnStop.addEventListener('click', () => {
+  refs.onBtnStart.disabled = false;
+  refs.onBtnStop.disabled = true;
+
   clearInterval(timerId);
 });
