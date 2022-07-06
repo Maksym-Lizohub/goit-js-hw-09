@@ -49,10 +49,14 @@ function updateTimeInterface() {
   }
   const time = convertMs(difference);
 
-  refs.days.textContent = time.days;
-  refs.hours.textContent = time.hours;
-  refs.minutes.textContent = time.minutes;
-  refs.seconds.textContent = time.seconds;
+  refs.days.textContent = addLeadingZero(time.days);
+  refs.hours.textContent = addLeadingZero(time.hours);
+  refs.minutes.textContent = addLeadingZero(time.minutes);
+  refs.seconds.textContent = addLeadingZero(time.seconds);
+
+  function addLeadingZero(value) {
+    return value.toString().padStart(2, '0');
+  }
 }
 
 function convertMs(ms) {
@@ -65,16 +69,11 @@ function convertMs(ms) {
   // Remaining days
   let days = String(Math.floor(ms / day));
   // Remaining hours
-  const hours = String(Math.floor((ms % day) / hour)).padStart(2, '0');
+  const hours = String(Math.floor((ms % day) / hour));
   // Remaining minutes
-  const minutes = String(Math.floor(((ms % day) % hour) / minute)).padStart(
-    2,
-    '0'
-  );
+  const minutes = String(Math.floor(((ms % day) % hour) / minute));
   // Remaining seconds
-  const seconds = String(
-    Math.floor((((ms % day) % hour) % minute) / second)
-  ).padStart(2, '0');
-  if (days.length === 1) days = days.padStart(2, '0');
+  const seconds = String(Math.floor((((ms % day) % hour) % minute) / second));
+  if (days.length === 1) days = days;
   return { days, hours, minutes, seconds };
 }
