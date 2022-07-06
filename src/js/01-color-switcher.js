@@ -10,7 +10,7 @@ const refs = {
   onBtnStop: document.querySelector('[data-stop]'),
 };
 
-refs.onBodyColor.style = 'height: 100vh, display:flex';
+refs.onBodyColor.style = 'height: 100vh';
 refs.onBodyColor.style.background =
   'linear-gradient(to bottom, blue 50%, yellow 50%)';
 
