@@ -10,8 +10,9 @@ const refs = {
   onBtnStop: document.querySelector('[data-stop]'),
 };
 
+refs.onBodyColor.style = 'height: 100vh, display:flex';
 refs.onBodyColor.style.background =
-  'linear-gradient(to bottom, blue 50%, yellow 50%) no-repeat';
+  'linear-gradient(to bottom, blue 50%, yellow 50%)';
 
 let timerId = null;
 
